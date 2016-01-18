@@ -7,5 +7,4 @@
         [base][left] overlay=shortest=1 [tmp1]; 
         [tmp1][right] overlay=shortest=1:x=640
 " 
--f mpeg1video -b 100k -r 30 http://127.0.0.1:8082
-#-c:v -f mpeg1video -b 100k -r 30 http://127.0.0.1:8082
+-c:v mpeg1video -b 100k -r 30 http://127.0.0.1:8082
