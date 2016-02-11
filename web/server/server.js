@@ -26,8 +26,8 @@ http.createServer(app).listen(app.get('port'), function () {
 // Reference: https://github.com/phoboslab/jsmpeg/blob/master/stream-server.js
 
 var STREAM_MAGIC_BYTES = 'jsmp'; // Must be 4 bytes
-var width = 704;
-var height = 288;
+var width = 1280;
+var height = 360;
 
 // WebSocket server
 var wsServer = new (ws.Server)({ port: configServer.wsPort });
