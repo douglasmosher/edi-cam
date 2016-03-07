@@ -15,7 +15,7 @@
 // http://www.developer.nokia.com/Community/Wiki/MPEG_decoder_in_Java_ME
 
 // LED slider 
-var sliderChange = function(sliderValue) {
+var sliderChange = window.sliderChange = function(sliderValue) {
     console.log("Slider changed: " + sliderValue);
     // *** Task 14 ***
   };
