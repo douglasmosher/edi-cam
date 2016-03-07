@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta name="viewport" content="initial-scale=1"/>
-  <title>edi-cam</title>
+  <title>Victim Locator #1</title>
   <style type="text/css">
     .container {
       margin-top: 10%;
@@ -14,10 +14,41 @@
       height: 120px;
       border: 1px solid #ccc;
     }
+
+    body {
+        background-color: black;
+    }
+
+    #slider {
+      width: 150px;
+      height: 5px;
+      position: relative;
+      left: 500px;
+      top: 5px;
+      margin: 10px auto;
+      background: DarkOrange;
+    }
+
+  .button {
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 8px;
+      margin: 4px 2px;
+      position: relative;
+      left: 675px;
+      bottom: 25px;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
-  <!-- Reference: https://github.com/phoboslab/jsmpeg/blob/master/stream-example.html -->
 
   <div class="container">
     <!--
@@ -28,11 +59,18 @@
     <canvas id="canvas-video" width="1280" height="400"></canvas>
   </div>
 
+  <div id="sliderDiv">
+    <!-- This slider controls the LED dimming (0-100% in steps of 10) -->
+    <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
+  </div>
+
+  <button type="button" class="button" onclick="buttonClick()">Take Pano!</button>
+
   <script src="/jsmpg.js"></script>
   <script type="text/javascript">
     // CHANGE THIS TO THE APPROPRIATE WS ADDRESS
     //var wsUrl = 'ws://victim_locator_1.local:8084/';ws://192.168.49.180:8084/';
-    var wsUrl = 'ws://192.168.49.180:8084/';
+    var wsUrl = 'ws://192.168.0.22:8084/';
 
     // Show loading notice
     var canvas = document.getElementById('canvas-video');
@@ -40,6 +78,7 @@
     ctx.fillStyle = '#333';
     ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
 
+   
     // Start the player
     var client = new WebSocket(wsUrl);
     var player = new jsmpeg(client, { canvas:canvas });
