@@ -58,6 +58,11 @@
     -->
     <canvas id="canvas-video" width="1280" height="400"></canvas>
   </div>
+  
+  <div id="sliderDiv">
+    <!-- This slider controls the LED dimming (0-100% in steps of 10) -->
+    <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
+  </div>
 
   <button type="button" class="button" onclick="buttonClick()">Take Pano!</button>
 
@@ -77,11 +82,5 @@
     var client = new WebSocket(wsUrl);
     var player = new jsmpeg(client, { canvas:canvas });
   </script>
-
-  <div id="sliderDiv">
-    <!-- This slider controls the LED dimming (0-100% in steps of 10) -->
-    <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
-  </div>
-    
 </body>
 </html>
