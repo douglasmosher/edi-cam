@@ -61,6 +61,11 @@ wsServer.broadcast = function(data, opts) {
   }
 };
 
+var sliderChange = function(sliderValue) {
+    consoleLog("Slider changed: " + sliderValue);
+    // *** Task 14 ***
+};
+
 // HTTP server to accept incoming MPEG1 stream
 http.createServer(function (req, res) {
   console.log(
