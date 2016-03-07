@@ -59,20 +59,6 @@
     <canvas id="canvas-video" width="1280" height="400"></canvas>
   </div>
 
-  <script src="/leds.js"></script>
-  <script type="text/javascript">
-    // CHANGE THIS TO THE APPROPRIATE WS ADDRESS
-    var wsUrl1 = 'ws://192.168.0.22:8082/';
-
-    // Update LEDs
-    var ledclient = new WebSocket(wsUrl1);
-  </script>
-
-  <div id="sliderDiv">
-    <!-- This slider controls the LED dimming (0-100% in steps of 10) -->
-    <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
-  </div>
-
   <button type="button" class="button" onclick="buttonClick()">Take Pano!</button>
 
   <script src="/jsmpg.js"></script>
@@ -91,5 +77,11 @@
     var client = new WebSocket(wsUrl);
     var player = new jsmpeg(client, { canvas:canvas });
   </script>
+
+  <div id="sliderDiv">
+    <!-- This slider controls the LED dimming (0-100% in steps of 10) -->
+    <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
+  </div>
+    
 </body>
 </html>
