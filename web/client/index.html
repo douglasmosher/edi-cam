@@ -59,7 +59,15 @@
     <canvas id="canvas-video" width="1280" height="400"></canvas>
   </div>
 
-  <script src="../server/server.js"></script>
+  <script src="/leds.js"></script>
+  <script type="text/javascript">
+    // CHANGE THIS TO THE APPROPRIATE WS ADDRESS
+    var wsUrl1 = 'ws://192.168.0.22:8008/';
+
+    // Update LEDs
+    var ledclient = new WebSocket(wsUrl1);
+  </script>
+  
   <div id="sliderDiv">
     <!-- This slider controls the LED dimming (0-100% in steps of 10) -->
     <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
@@ -79,7 +87,6 @@
     ctx.fillStyle = '#333';
     ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
 
-   
     // Start the player
     var client = new WebSocket(wsUrl);
     var player = new jsmpeg(client, { canvas:canvas });
