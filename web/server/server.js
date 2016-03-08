@@ -29,7 +29,7 @@ var STREAM_MAGIC_BYTES = 'jsmp'; // Must be 4 bytes
 var width = 320;
 var height = 120;
 
-// WebSocket server
+// Video WebSocket server
 var wsServer = new (ws.Server)({ port: configServer.wsPort });
 console.log('WebSocket server listening on port ' + configServer.wsPort);
 
@@ -44,6 +44,11 @@ wsServer.on('connection', function(socket) {
   socket.send(streamHeader, { binary: true });
 
   console.log('New WebSocket Connection (' + wsServer.clients.length + ' total)');
+
+  // Try to recieve from LED bar
+  socket.on('message', function(data) {
+  console.log('We did it' + data);
+  });
 
   socket.on('close', function(code, message){
     console.log('Disconnected WebSocket (' + wsServer.clients.length + ' total)');
@@ -60,11 +65,6 @@ wsServer.broadcast = function(data, opts) {
     }
   }
 };
-
-// Try to recieve from LED bar
-wsServer.on('message', function(data) {
-  console.log('We did it' + data);
-});
 
 // HTTP server to accept incoming MPEG1 stream
 http.createServer(function (req, res) {

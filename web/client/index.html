@@ -81,10 +81,10 @@
     var client = new WebSocket(wsUrl);
     var player = new jsmpeg(client, { canvas:canvas });
 
+    // Send LED level
     var sliderChange = window.sliderChange = function(sliderValue) {
       console.log("Slider changed: " + sliderValue);
       client.send(sliderValue);
-      // *** Task 14 ***
     };
   </script>
 
