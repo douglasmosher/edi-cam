@@ -3,7 +3,7 @@
 	// LED slider 
 	var sliderChange = window.sliderChange = function(sliderValue) {
 	    console.log("Slider changed: " + sliderValue);
-	    wsServer.send(sliderValue);
+	    ws.send(sliderValue);
 	    // *** Task 14 ***
 	  };
 
