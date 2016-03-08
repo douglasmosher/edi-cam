@@ -90,7 +90,7 @@
 
     // Send picture command
     var takePano = window.takePano = function() {
-      var controlPIC = {type: "PIC", lat: "49.2609973" lon: "-123.20725699999998"}
+      var controlPIC = {type: "PIC", lat: "49.2609973", lon: "-123.20725699999998"}
       console.log("Slider changed: " + controlPIC.lat);
       client.send(JSON.stringify(controlPIC));
     };
