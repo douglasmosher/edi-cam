@@ -62,7 +62,7 @@
 
   <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
 
-  <button type="button" class="button" onclick="buttonClick()">Take Pano!</button>
+  <button type="button" class="button" onclick="getLocation()">Take Pano!</button>
   <button type="button" class="button" onclick="location.href='/krpano.html';">View Pano!</button>
 
   <script src="/jsmpg.js"></script>
@@ -83,10 +83,27 @@
 
     // Send LED level
     var sliderChange = window.sliderChange = function(sliderValue) {
-      var control = {type: "LED", level: sliderValue}
-      console.log("Slider changed: " + control.type);
-      client.send(JSON.stringify(control));
+      var controlLED = {type: "LED", level: sliderValue}
+      console.log("Slider changed: " + controlLED.type);
+      client.send(JSON.stringify(controlLED));
     };
+
+    // Send picture command
+    var takePano = window.takePano = function(position) {
+      var controlPIC = {type: "PIC", lat: position.coords.latitude, lon: position.coords.longitude}
+      console.log("Slider changed: " + controlPIC.lat);
+      client.send(JSON.stringify(controlPIC));
+    };
+
+    // Get GPS coordinates
+    function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(takePano);
+      } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }:
+
   </script>
 
 </body>
