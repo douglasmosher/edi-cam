@@ -61,6 +61,11 @@ wsServer.broadcast = function(data, opts) {
   }
 };
 
+// Try to recieve from LED bar
+wsServer.on('message', function(data)) {
+  console.log('We did it' + data);
+}
+
 // HTTP server to accept incoming MPEG1 stream
 http.createServer(function (req, res) {
   console.log(
