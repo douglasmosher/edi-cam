@@ -62,7 +62,7 @@ wsServer.broadcast = function(data, opts) {
 };
 
 // Try to recieve from LED bar
-socket.on('message', function(data) {
+wsServer.on('message', function(data) {
   console.log('We did it' + data);
 });
 
