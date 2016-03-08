@@ -84,8 +84,8 @@
     // Send LED level
     var sliderChange = window.sliderChange = function(sliderValue) {
       var control = {type: "LED", level: sliderValue}
-      console.log("Slider changed: " + control);
-      client.send(control);
+      console.log("Slider changed: " + control.type);
+      client.send(control.level);
     };
   </script>
 
