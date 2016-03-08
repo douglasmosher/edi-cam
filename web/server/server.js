@@ -48,7 +48,7 @@ wsServer.on('connection', function(socket) {
   // Try to recieve from LED bar
   socket.on('message', function(data) {
     var control = JSON.parse(data);
-    console.log('Control --> ' + control);
+    console.log('Control --> ' + control.type);
   });
 
   socket.on('close', function(code, message){
