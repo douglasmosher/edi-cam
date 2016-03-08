@@ -48,7 +48,15 @@ wsServer.on('connection', function(socket) {
   // Try to recieve from LED bar
   socket.on('message', function(data) {
     var control = JSON.parse(data);
-    console.log('Control --> ' + control.type);
+    if(control.type == "LED"){
+      console.log('Control Type --> ' + control.type);
+      console.log('LED Dim Level --> ' + control.level);
+    }
+    else if(control.type == "PIC"){
+      console.log('Control Type --> ' + control.type);
+      console.log('Latitude --> ' + control.lat);
+      console.log('Longitude --> ' + control.lon);
+    }
   });
 
   socket.on('close', function(code, message){
