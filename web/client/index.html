@@ -22,19 +22,20 @@
     #slider {
       width: 150px;
       height: 5px;
+      color: #666;
       position: relative;
       left: 15px;
       top: 5px;
       margin: 10px auto;
-      background: DarkOrange;
+      background: #666;
     }
 
     .button {
-      background-color: #4CAF50;
-      border: none;
+      background-color: transparent;
+      border: 1px solid #666;
       border-radius: 20px;
       float: left;
-      color: white;
+      color: #666;
       padding: 10px 10px;
       text-align: center;
       text-decoration: none;
@@ -45,6 +46,26 @@
       left: 315px;
       top: 0px;
       cursor: pointer;
+      box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px
+    }
+
+    .button:active {
+      background-color: transparent;
+      border: 1px solid #666;
+      border-radius: 20px;
+      float: left;
+      color: #666;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 8px;
+      margin: 4px 2px;
+      position: relative;
+      left: 315px;
+      top: 4px;
+      cursor: pointer;
+      box-shadow: 0 1px 0 #666, 0 2px 0 #444, 0 2px 2px
     }
 
   </style>
