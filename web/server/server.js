@@ -58,6 +58,13 @@ wsServer.on('connection', function(socket) {
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
     }
+    else if(control.type == "VID"){
+      console.log('Control Type --> ' + control.type);
+      console.log('Video State --> ' + control.state);
+      console.log('Latitude --> ' + control.lat);
+      console.log('Longitude --> ' + control.lon);
+    }
+    conso
     console.log('----------------------------------------------------------------------------');
   });
 
