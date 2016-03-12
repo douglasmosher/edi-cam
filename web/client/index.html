@@ -124,13 +124,11 @@
       if (buttonState == "down") {
         console.log("State: " + controlVID.state);
         client.send(JSON.stringify(controlVID));
-      }
-      else if (buttonState == "up") {
+      } else if (buttonState == "up") {
         controlVID.type = "VID";
         console.log("State: " + controlPIC.state);
         client.send(JSON.stringify(controlVID));        
       }
-      
     };
 
 
