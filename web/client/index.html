@@ -120,12 +120,14 @@
 
     // Send video command
     var takeVideo = window.takeVideo = function(buttonState) {
+      var controlVID = {type: "VID", state: "start", lat: "49.2609973", lon: "-123.20725699999998"}
       if (buttonState == "down") {
-        var controlVID = {type: "VID", state: "start", lat: "49.2609973", lon: "-123.20725699999998"}
+        console.log("State: " + controlVID.state);
         client.send(JSON.stringify(controlVID));
       }
       else if (buttonState == "up") {
-        var controlVID = {type: "VID", state: "end", lat: "49.2609973", lon: "-123.20725699999998"}
+        controlVID.type = "VID";
+        console.log("State: " + controlPIC.state);
         client.send(JSON.stringify(controlVID));        
       }
       
