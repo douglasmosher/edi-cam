@@ -64,7 +64,6 @@ wsServer.on('connection', function(socket) {
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
     }
-    conso
     console.log('----------------------------------------------------------------------------');
   });
 
