@@ -84,8 +84,8 @@
   <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
 
   <button type="button" class="button" onmousedown="takePano()">Take Pano!</button>
-  <button type="button" class="button" onmousedown="takeVideo("down")" onmouseup="takeVideo("up")">Take Video!</button>
-
+  <button type="button" class="button" onmousedown="takePano("down")" onmouseup="takePano("up")">Take Video!</button>
+  <button type="button" class="button" onclick="location.href='/krpano.html';">View Pano!</button>
 
   <script src="/jsmpg.js"></script>
   <script type="text/javascript">
@@ -121,16 +121,14 @@
     // Send video command
     var takeVideo = window.takeVideo = function(buttonState) {
       var controlVID = {type: "VID", state: "start", lat: "49.2609973", lon: "-123.20725699999998"}
-      //if (buttonState == "down") {
-        //console.log("State: " + controlVID.state);
-        ///client.send(JSON.stringify(controlVID));
-      //} else if (buttonState == "up") {
-        //controlVID.type = "VID";
-        //console.log("State: " + controlVID.state);
-        //client.send(JSON.stringify(controlVID));        
-      //}
-      console.log("State: " + controlVID.state);
-
+      if (buttonState == "down") {
+        console.log("State: " + controlVID.state);
+        client.send(JSON.stringify(controlVID));
+      } else if (buttonState == "up") {
+        controlVID.type = "VID";
+        console.log("State: " + controlVID.state);
+        client.send(JSON.stringify(controlVID));        
+      }
     };
 
 
