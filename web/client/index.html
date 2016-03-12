@@ -83,7 +83,7 @@
 
   <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
 
-  <button type="button" class="button" onmousedown="takePano()">Take Pano!</button>
+  <button type="button" class="button" onmousedown="takePano()" onmouseup="takePano()">Take Pano!</button>
   <button type="button" class="button" onclick="location.href='/krpano.html';">View Pano!</button>
 
   <script src="/jsmpg.js"></script>
