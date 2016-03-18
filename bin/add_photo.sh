@@ -8,7 +8,7 @@ line 1 env.type\
 line 2 env.num\
 line 3\
 line 4\
-line 5/" test.xml
+line 5/" ../../bin/test.xml
 
 #sed 's/<!-- add photo here -->/\
 #<!-- add photo here -->\
