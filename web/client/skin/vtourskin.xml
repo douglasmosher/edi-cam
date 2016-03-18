@@ -244,7 +244,7 @@ if(keycode == 36, skin_gotoscene(0) );
 <!--  Home/Pos1 - first scene  -->
 </action>
 <action name="skin_deeplinking_update_url">
-if(skin_settings.deeplinking AND (!webvr OR webvr.isenabled === false), copy(adr, browser.location); indexoftxt(qi, get(adr), '?'); if(qi GT 0, subtxt(adr, adr, 0, get(qi))); copy(si, scene[get(xml.scene)].index); copy(h, view.hlookat); copy(v, view.vlookat); copy(f, view.fov); copy(d, view.distortion); copy(a, view.architectural); clamp(d, 0.0, 1.0); clamp(a, 0.0, 1.0); set(pp, calc(f LT 10 ? 6 : 2)); roundval(h, get(pp)); roundval(v, get(pp)); roundval(f, get(pp)); roundval(d, 2); roundval(a, 1); set(adr, calc(adr + '?startscene=' + si + '&startactions=lookat('+h+','+v+','+f+','+d+','+a+');')); js( history.replaceState(null, document.title, get(adr)); ); );
+if(skin_settings.deeplinking AND (!webvr OR webvr.isenabled === false), copy(adr, browser.location); indexoftxt(qi, get(adr), '?'); if(qi GT 0, subtxt(adr, adr, 0, get(qi))); copy(si, scene[get(xml.scene)].index); copy(h, view.hlookat); copy(v, view.vlookat); copy(f, view.fov); copy(d, view.distortion); copy(a, view.architectural); clamp(d, 0.0, 1.0); clamp(a, 0.0, 1.0); set(pp, calc(f LT 10 ? 6 : 2)); roundval(h, get(pp)); roundval(v, get(pp)); roundval(f, get(pp)); roundval(d, 2); roundval(a, 1); set(adr, calc(adr + '?startscene=' + si + 'startactions=lookat('+h+','+v+','+f+','+d+','+a+');')); js( history.replaceState(null, document.title, get(adr)); ); );
 </action>
 <!--  context menu  -->
 <contextmenu>
