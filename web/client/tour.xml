@@ -36,7 +36,7 @@ if(startscene === null, copy(startscene,scene[0].name)); loadscene(get(startscen
 <!--  place your scene hotspots here  -->
 </scene>
 <scene name="inside_my_house" title="Inside My House" onstart="" lat="49.2608662" lng="-123.213681" heading="0.0">
-<plugin name="video" url="plugins/videoplayer.swf" url.html5="videoplayer.js" videourl="out.mp4" />
+<plugin name="video" url="plugins/videoplayer.swf" url.html5="plugins/videoplayer.js" videourl="out.mp4" />
 <view hlookat="0" vlookat="0" maxpixelzoom="1.0" fovmax="180" limitview="range" vlookatmin="-90" vlookatmax="90" />
 <image hfov="360" vfov="140">
 	<sphere url="plugin:video" />
