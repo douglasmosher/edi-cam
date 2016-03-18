@@ -63,15 +63,22 @@ wsServer.on('connection', function(socket) {
       console.log('Longitude --> ' + control.lon);
       childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
         if (err) { throw err; }
-        console.log('stdout:\n', stdout);
-        console.log('stderr:\n', stderr);
+        //console.log('stdout:\n', stdout);
+        //console.log('stderr:\n', stderr);
       });
+      pic.num++;
     }
     else if(control.type == "VID"){
       console.log('Control Type --> ' + control.type);
       console.log('Video State --> ' + control.state);
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
+      childProcess.exec('../../bin/add_video.sh', {env: {file: vid.num + vid.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
+        if (err) { throw err; }
+        //console.log('stdout:\n', stdout);
+        //console.log('stderr:\n', stderr);
+      });
+      vid.num++;
     }
     console.log('----------------------------------------------------------------------------');
   });
