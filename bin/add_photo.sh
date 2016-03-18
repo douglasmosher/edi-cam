@@ -1,18 +1,10 @@
 #Ammend the xml file with a path to the newly added photo
 sed -i 's/<!-- add photo here -->/\
 <!-- add photo here -->\
------------------------------------------------------------------------\
------------------------------------------------------------------------\
-Latitude is '"$lat"'\
-longitude is '"$lon"'\
------------------------------------------------------------------------\
------------------------------------------------------------------------/' ../../bin/test.xml
+<scene name="'"$file"'" title="'"$file"'" onstart="" lat="'"$lat"'" lng="'"$lon"'" heading="0.0">\
+<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>\
+<image>\
+	<sphere url="'"$file"'"/>\
+</image>/' ../../bin/test.xml
 
-#sed 's/<!-- add photo here -->/\
-#<!-- add photo here -->\
-#<scene name="my_house" title="My House" onstart="" lat="49.2611738" lng="-123.2138352" heading="0.0">\
-#<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>\
-#<image>\
-#	<sphere url="my_house.jpg"/>\
-#</image>/' tour.xml
-
+/home/root/bin/ffmpeg/ffmpeg -s 1280x720 -f video4linux2 -i /dev/video0 -s 1280x720 -f video4linux2 -i /dev/video1 -filter_complex "nullsrc=size=2560x720 [base]; [0:v] setpts=PTS-STARTPTS, scale=1280x720 [left]; [1:v] setpts=PTS-STARTPTS, scale=1280x720 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=1280" -f image2 "$file"
