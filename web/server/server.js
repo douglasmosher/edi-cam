@@ -58,6 +58,7 @@ wsServer.on('connection', function(socket) {
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
       childProcess.exec('NAME="DOUG"');
+      childProcess.exec('echo $NAME');
     }
     else if(control.type == "VID"){
       console.log('Control Type --> ' + control.type);
