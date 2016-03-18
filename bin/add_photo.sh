@@ -1,4 +1,5 @@
 #Ammend the xml file with a path to the newly added photo
+printenv
 
 $ sed '29 s/<!-- add photo here -->/\
 <!-- add photo here -->\

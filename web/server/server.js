@@ -8,6 +8,10 @@ var childProcess = require('child_process')
 // configuration files
 var configServer = require('./lib/config/server');
 
+// File name variables
+var pic = {num:1, type:".jpg"};
+var vid = {num:1, type:".mp4"};
+
 // app parameters
 var app = express();
 app.set('port', configServer.httpPort);
@@ -45,7 +49,7 @@ wsServer.on('connection', function(socket) {
 
   console.log('New WebSocket Connection (' + wsServer.clients.length + ' total)');
 
-  // Try to recieve from LED bar
+  // Receive control message from client
   socket.on('message', function(data) {
     var control = JSON.parse(data);
     console.log('------------------------------Incoming Command------------------------------');
@@ -57,8 +61,7 @@ wsServer.on('connection', function(socket) {
       console.log('Control Type --> ' + control.type);
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
-      childProcess.exec('NAME="DOUG"');
-      childProcess.exec('echo $NAME');
+      childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}});
     }
     else if(control.type == "VID"){
       console.log('Control Type --> ' + control.type);
