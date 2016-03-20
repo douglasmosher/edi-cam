@@ -62,30 +62,23 @@ wsServer.on('connection', function(socket) {
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
       stream.kill('SIGQUIT');//'SIGQUIT');
-      //setTimeout(function() {
-        //console.log('Taking Photo');
-        //childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
-          //if (err) { throw err; }
-            //console.log('stdout:\n', stdout);
-            //console.log('stderr:\n', stderr);
-        //});
-      //}, 500);
-      //setTimeout(function() {
-        //console.log('Restart Video Stream');
-        //stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=320x120 [base]; [0:v] setpts=PTS-STARTPTS, scale=160x120 [left]; [1:v] setpts=PTS-STARTPTS, scale=160x120 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=160" -f mpeg1video \
-//http://127.0.0.1:8082'); 
-      //}, 1000);      
+      setTimeout(function() {
+        console.log('Taking Photo');
+        childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
+          if (err) { throw err; }
+            console.log('stdout:\n', stdout);
+            console.log('stderr:\n', stderr);
+        });
+      }, 500);     
       pic.num++;
     }
     else if(control.type == "VID"){
       console.log('Control Type --> ' + control.type);
-      console.log('Video State --> ' + control.state);
-      console.log('Latitude --> ' + control.lat);
-      console.log('Longitude --> ' + control.lon);
-      childProcess.exec('../../bin/add_video.sh', {env: {file: vid.num + vid.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
+      var stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=320x120 [base]; [0:v] setpts=PTS-STARTPTS, scale=160x120 [left]; [1:v] setpts=PTS-STARTPTS, scale=160x120 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=160" -f mpeg1video \
+http://127.0.0.1:8082'); 
         if (err) { throw err; }
-        //console.log('stdout:\n', stdout);
-        //console.log('stderr:\n', stderr);
+        console.log('stdout:\n', stdout);
+        console.log('stderr:\n', stderr);
       });
       vid.num++;
     }
@@ -125,9 +118,6 @@ http.createServer(function (req, res) {
   //stream = childProcess.exec('../../bin/do_ffmpeg.sh');
 });
  
-var stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=320x120 [base]; [0:v] setpts=PTS-STARTPTS, scale=160x120 [left]; [1:v] setpts=PTS-STARTPTS, scale=160x120 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=160" -f mpeg1video \
-http://127.0.0.1:8082'); 
-
 stream.on("exit", function (code, signal) {
   if (code === null && signal === "SIGTERM") {
     console.log("child has been terminated");
