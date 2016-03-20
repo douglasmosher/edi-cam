@@ -32,6 +32,7 @@ http.createServer(app).listen(app.get('port'), function () {
 var STREAM_MAGIC_BYTES = 'jsmp'; // Must be 4 bytes
 var width = 320;
 var height = 120;
+var stream;
 
 // Video WebSocket server
 var wsServer = new (ws.Server)({ port: configServer.wsPort });
@@ -62,7 +63,7 @@ wsServer.on('connection', function(socket) {
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
       stream.kill('SIGQUIT');
-      childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
+      //childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
         if (err) { throw err; }
         //console.log('stdout:\n', stdout);
         //console.log('stderr:\n', stderr);
@@ -99,8 +100,6 @@ wsServer.broadcast = function(data, opts) {
     }
   }
 };
-
-var stream;
 
 // HTTP server to accept incoming MPEG1 stream
 http.createServer(function (req, res) {
