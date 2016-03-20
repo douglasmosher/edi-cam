@@ -63,11 +63,19 @@ wsServer.on('connection', function(socket) {
       console.log('Longitude --> ' + control.lon);
       stream.kill('SIGQUIT');//'SIGQUIT');
       console.log('Stream has quit');
-      childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
-        if (err) { throw err; }
-        console.log('stdout:\n', stdout);
-        console.log('stderr:\n', stderr);
-      });
+      setTimeout(function() {
+        console.log('Blah blah blah blah extra-blah');
+        childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
+          if (err) { throw err; }
+            console.log('stdout:\n', stdout);
+            console.log('stderr:\n', stderr);
+        });
+      }, 10000);
+      //childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
+        //if (err) { throw err; }
+        //console.log('stdout:\n', stdout);
+        //console.log('stderr:\n', stderr);
+      //});
       pic.num++;
     }
     else if(control.type == "VID"){
