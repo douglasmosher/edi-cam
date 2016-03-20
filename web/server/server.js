@@ -67,7 +67,7 @@ wsServer.on('connection', function(socket) {
         if (err) { throw err; }
         //console.log('stdout:\n', stdout);
         //console.log('stderr:\n', stderr);
-      });
+      //});
       pic.num++;
     }
     else if(control.type == "VID"){
