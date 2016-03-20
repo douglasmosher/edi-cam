@@ -110,8 +110,8 @@
 
   <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
 
-  <button type="button" class="button" onmousedown="takePano()">Take Pano!</button>
-  <button type="button" class="button" onmousedown="takePano("down")" onmouseup="takePano("up")">Live Video!</button>
+  <button type="button" class="button" onmousedown="getLocation()">Take Pano!</button>
+  <button type="button" class="button" onmousedown="liveVid()">Live Video!</button>
   <button type="button" class="button" onclick="location.href='/krpano.html';">View Pano!</button>
 
   <script src="/jsmpg.js"></script>
@@ -139,34 +139,27 @@
     };
 
     // Send picture command
-    var takePano = window.takePano = function() {
-      var controlPIC = {type: "PIC", lat: "49.2609973", lon: "-123.20725699999998"}
-      console.log("Take Picture: " + controlPIC.lat);
+    var takePano = window.takePano = function(position) {
+      var controlPIC = {type: "PIC", lat: position.coords.latitude, lon: position.coords.longitude}
+      console.log("Take Picture: ");
       client.send(JSON.stringify(controlPIC));
     };
 
-    // Send video command
-    var takeVideo = window.takeVideo = function(buttonState) {
-      var controlVID = {type: "VID", state: "start", lat: "49.2609973", lon: "-123.20725699999998"}
-      if (buttonState == "down") {
-        console.log("State: " + controlVID.state);
-        client.send(JSON.stringify(controlVID));
-      } else if (buttonState == "up") {
-        controlVID.type = "VID";
-        console.log("State: " + controlVID.state);
-        client.send(JSON.stringify(controlVID));        
-      }
+    // Send live video command
+    var liveVid = window.livevid = function() {
+      var controlVID = {type: "VID"}
+      console.log("Start Stream");
+      client.send(JSON.stringify(controlVID));
     };
 
-
     // Get GPS coordinates
-    //function getLocation() {
-    //  if (navigator.geolocation) {
-    //      navigator.geolocation.getCurrentPosition(takePano);
-    //  } else { 
-    //      x.innerHTML = "Geolocation is not supported by this browser.";
-    //  }
-    //};
+    function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(takePano);
+      } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    };
 
   </script>
 
