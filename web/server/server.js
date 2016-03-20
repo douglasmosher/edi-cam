@@ -117,12 +117,13 @@ http.createServer(function (req, res) {
   //stream = childProcess.exec('../../bin/do_ffmpeg.sh');
 });
  
-var stream = childProcess.exec('../../bin/do_ffmpeg.sh', function(err, stdout, stderr) {
+var stream = childProcess.exec("/home/root/bin/ffmpeg/ffmpeg -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=320x120 [base]; [0:v] setpts=PTS-STARTPTS, scale=160x120 [left]; [1:v] setpts=PTS-STARTPTS, scale=160x120 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=160" -f mpeg1video \
+http://127.0.0.1:8082", function(err, stdout, stderr) {
   if (err) { throw err; }
     console.log('stdout:\n', stdout);
     console.log('stderr:\n', stderr);
   }); 
-stream.kill("SIGKILL");
+stream.kill("SIGTERM");
 stream.on("exit", function (code, signal) {
   if (code === null && signal === "SIGTERM") {
     console.log("child has been terminated");
