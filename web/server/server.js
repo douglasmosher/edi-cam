@@ -118,4 +118,9 @@ http.createServer(function (req, res) {
 });
  
 var stream = childProcess.spawn('../../bin/do_ffmpeg.sh'); 
+stream.on("exit", function (code, signal) {
+  if (code === null && signal === "SIGTERM") {
+    console.log("child has been terminated");
+  }
+});
 module.exports.app = app;
