@@ -79,7 +79,7 @@ http://127.0.0.1:8082');
         if (err) { throw err; }
         console.log('stdout:\n', stdout);
         console.log('stderr:\n', stderr);
-      });
+      };
       vid.num++;
     }
     console.log('----------------------------------------------------------------------------');
