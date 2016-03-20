@@ -118,10 +118,10 @@ http.createServer(function (req, res) {
 });
  
 //var stream = childProcess.exec('../../bin/do_ffmpeg.sh'); 
-stream.kill('SIGTERM');
-stream.on("exit", function (code, signal) {
-  if (code === null && signal === "SIGTERM") {
-    console.log("child has been terminated");
-  }
-});
+//stream.kill('SIGTERM');
+//stream.on("exit", function (code, signal) {
+  //if (code === null && signal === "SIGTERM") {
+    //console.log("child has been terminated");
+  //}
+//});
 module.exports.app = app;
