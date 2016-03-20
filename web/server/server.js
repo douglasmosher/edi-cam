@@ -32,7 +32,6 @@ http.createServer(app).listen(app.get('port'), function () {
 var STREAM_MAGIC_BYTES = 'jsmp'; // Must be 4 bytes
 var width = 320;
 var height = 120;
-var stream; 
 
 // Video WebSocket server
 var wsServer = new (ws.Server)({ port: configServer.wsPort });
@@ -116,7 +115,7 @@ http.createServer(function (req, res) {
 
   // Run do_ffmpeg.sh from node                                                   
   //stream = childProcess.exec('../../bin/do_ffmpeg.sh');
-  stream = childProcess.spawn('../../bin/do_ffmpeg.sh');
 });
  
+var stream = childProcess.spawn('../../bin/do_ffmpeg.sh'); 
 module.exports.app = app;
