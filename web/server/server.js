@@ -117,11 +117,11 @@ http.createServer(function (req, res) {
   //stream = childProcess.exec('../../bin/do_ffmpeg.sh');
 });
  
-//var stream = childProcess.exec('../../bin/do_ffmpeg.sh'); 
-//stream.kill('SIGTERM');
-//stream.on("exit", function (code, signal) {
-  //if (code === null && signal === "SIGTERM") {
-    //console.log("child has been terminated");
-  //}
-//});
+var stream = childProcess.exec('../../bin/do_ffmpeg.sh'); 
+stream.kill("SIGTERM");
+stream.on("exit", function (code, signal) {
+  if (code === null && signal === "SIGTERM") {
+    console.log("child has been terminated");
+  }
+});
 module.exports.app = app;
