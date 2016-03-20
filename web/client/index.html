@@ -84,14 +84,14 @@
   <input id="slider" type="range" min="0" max="100" value="0" step="10" onchange="sliderChange(this.value)"/>
 
   <button type="button" class="button" onmousedown="takePano()">Take Pano!</button>
-  <button type="button" class="button" onmousedown="takePano("down")" onmouseup="takePano("up")">Take Video!</button>
+  <button type="button" class="button" onmousedown="takePano("down")" onmouseup="takePano("up")">Live Video!</button>
   <button type="button" class="button" onclick="location.href='/krpano.html';">View Pano!</button>
 
   <script src="/jsmpg.js"></script>
   <script type="text/javascript">
     // CHANGE THIS TO THE APPROPRIATE WS ADDRESS
-    var wsUrl = 'ws://edison.local:8084/';
-    //var wsUrl = 'ws://192.168.0.22:8084/'; //Wu-Tang_-AN
+    //var wsUrl = 'ws://edison.local:8084/';
+    var wsUrl = 'ws://192.168.0.25:8084/'; //Wu-Tang_-AN
     //var wsUrl = 'ws://192.168.49.180:8084/'; //Android Wifi Direct
 
     // Show loading notice
