@@ -1,6 +1,3 @@
-#End ffmpeg stream
-q
-
 #Ammend the xml file with a path to the newly added photo
 sed -i 's/<!-- add photo here -->/\
 <!-- add photo here -->\
