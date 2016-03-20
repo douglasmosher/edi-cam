@@ -62,11 +62,11 @@ wsServer.on('connection', function(socket) {
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
       stream.kill('SIGTERM');//'SIGQUIT');
-      //childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
-        //if (err) { throw err; }
-        //console.log('stdout:\n', stdout);
-        //console.log('stderr:\n', stderr);
-      //});
+      childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
+        if (err) { throw err; }
+        console.log('stdout:\n', stdout);
+        console.log('stderr:\n', stderr);
+      });
       pic.num++;
     }
     else if(control.type == "VID"){
