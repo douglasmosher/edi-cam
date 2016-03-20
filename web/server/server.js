@@ -117,7 +117,11 @@ http.createServer(function (req, res) {
   //stream = childProcess.exec('../../bin/do_ffmpeg.sh');
 });
  
-var stream = childProcess.exec('../../bin/do_ffmpeg.sh'); 
+var stream = childProcess.exec('../../bin/do_ffmpeg.sh', function(err, stdout, stderr) {
+  if (err) { throw err; }
+    console.log('stdout:\n', stdout);
+    console.log('stderr:\n', stderr);
+  }); 
 stream.kill("SIGKILL");
 stream.on("exit", function (code, signal) {
   if (code === null && signal === "SIGTERM") {
