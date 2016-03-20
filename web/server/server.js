@@ -62,7 +62,7 @@ wsServer.on('connection', function(socket) {
       console.log('Control Type --> ' + control.type);
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
-      child.kill(stream);
+      stream.kill(stream);
       //stream.kill();//'SIGQUIT');
       //childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
         //if (err) { throw err; }
