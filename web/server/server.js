@@ -100,6 +100,8 @@ wsServer.broadcast = function(data, opts) {
   }
 };
 
+var stream;
+
 // HTTP server to accept incoming MPEG1 stream
 http.createServer(function (req, res) {
   console.log(
@@ -114,7 +116,7 @@ http.createServer(function (req, res) {
   console.log('Listening for video stream on port ' + configServer.streamPort);
 
   // Run do_ffmpeg.sh from node                                                   
-  const stream = childProcess.exec('../../bin/do_ffmpeg.sh');
+  stream = childProcess.exec('../../bin/do_ffmpeg.sh');
 });
 
 module.exports.app = app;
