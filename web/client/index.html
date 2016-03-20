@@ -20,14 +20,37 @@
     }
 
     #slider {
-      width: 150px;
-      height: 5px;
-      color: #666;
-      position: relative;
-      left: 15px;
-      top: 5px;
-      margin: 10px auto;
-      background: #666;
+    -webkit-appearance: none;
+    -webkit-transform:rotate(270deg);
+    position: relative;
+    left: 195px;
+    top: -75px;
+    }
+
+    #slider::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #666;
+    border: none;
+    border-radius: 0px;
+    }
+
+    #slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -8px;
+    }
+
+    #slider:focus {
+    outline: none;
+    }
+
+    #slider:focus::-webkit-slider-runnable-track {
+    background: #666;
     }
 
     .button {
