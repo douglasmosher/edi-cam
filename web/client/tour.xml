@@ -46,7 +46,7 @@ if(startscene === null, copy(startscene,scene[0].name)); loadscene(get(startscen
 <scene name="kaiser" title="Kaiser" onstart="" lat="49.2621314" lng="-123.2504511" heading="0.0">
 <view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>
 <image>
-	<sphere url="photos/kaiser.jpg"/>
+	<sphere url="photos/inside_my_house.jpg"/>
 </image>
 <!--  place your scene hotspots here  -->
 </scene>
