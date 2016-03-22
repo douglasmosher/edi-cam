@@ -30,8 +30,8 @@ http.createServer(app).listen(app.get('port'), function () {
 // Reference: https://github.com/phoboslab/jsmpeg/blob/master/stream-server.js
 
 var STREAM_MAGIC_BYTES = 'jsmp'; // Must be 4 bytes
-var width = 1280;
-var height = 480;
+var width = 702;
+var height = 288;
 var stream;
 
 // Video WebSocket server
@@ -88,7 +88,7 @@ wsServer.on('connection', function(socket) {
       if(vid == "off"){ 
         vid = "on"; 
         //160x120
-        stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 640x480 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 640x480 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=1280x480 [base]; [0:v] setpts=PTS-STARTPTS, scale=640x480 [left]; [1:v] setpts=PTS-STARTPTS, scale=640x480 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=640" -f mpeg1video http://127.0.0.1:8082');
+        stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 352x288 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 352x288 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=702x288 [base]; [0:v] setpts=PTS-STARTPTS, scale=352x288 [left]; [1:v] setpts=PTS-STARTPTS, scale=352x288 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=352" -f mpeg1video http://127.0.0.1:8082');
       }
       else if(vid == "on"){
         stream.kill('SIGTERM');
