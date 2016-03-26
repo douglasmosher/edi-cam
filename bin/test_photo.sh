@@ -1,3 +1,4 @@
 sed -i 's/<!-- add photo here -->/\
 <!-- add photo here -->\
-<scene name="'"$file"'" title="'"$file"'" onstart="" lat="'"$lat"'" lng="'"$lon"'" heading="0.0">/' test.xml
+<scene name="'"$file"'" title="'"$file"'" onstart="" lat="'"$lat"'" lng="'"$lon"'" heading="0.0">\
+<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>/' test.xml
