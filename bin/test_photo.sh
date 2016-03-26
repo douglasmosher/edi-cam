@@ -1,2 +1,7 @@
-/home/root/bin/ffmpeg/ffmpeg -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=320x120 [base]; [0:v] setpts=PTS-STARTPTS, scale=160x120 [left]; [1:v] setpts=PTS-STARTPTS, scale=160x120 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=160" -f mpeg1video \
-test.mp4
+sed -i 's/<!-- add photo here -->/\
+<!-- add photo here -->\
+<scene name='69' title='69' onstart="" lat='69' lng='69'" heading="0.0">\
+<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>\
+<image>\
+	<sphere url='69'/>\
+</image>/' /test.xml
