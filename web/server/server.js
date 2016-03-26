@@ -3,7 +3,7 @@ var childProcess = require('child_process')
   , express = require('express')
   , http = require('http')
   , morgan = require('morgan')
-  , ws = require('ws');
+  , ws = require('ws')
   , PythonShell = require('python-shell');
 
 // configuration files
