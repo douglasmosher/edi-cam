@@ -1,7 +1,7 @@
-sed -i 's/1/\
+sed -i 's/<!-- add photo here -->/\
+<!-- add photo here -->\
 <scene name="'"$file"'" title="'"$file"'" onstart="" lat="'"$lat"'" lng="'"$lon"'" heading="0.0">\
-1\
-1\
-1\
-1\
-1/' test.xml
+<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>\
+<image>\
+	<sphere url="photos/"'"$file"'"/>\
+</image>/' test.xml
