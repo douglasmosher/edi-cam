@@ -4,6 +4,7 @@ var childProcess = require('child_process')
   , http = require('http')
   , morgan = require('morgan')
   , ws = require('ws');
+  , PythonShell = require('python-shell');
 
 // configuration files
 var configServer = require('./lib/config/server');
