@@ -66,6 +66,7 @@ wsServer.on('connection', function(socket) {
       console.log('Latitude --> ' + control.lat);
       console.log('Longitude --> ' + control.lon);
       if(vid == "on"){
+        console.log('we here on');
         stream.kill('SIGTERM');
         vid = "off";
         setTimeout(function() {
@@ -78,6 +79,7 @@ wsServer.on('connection', function(socket) {
         }, 500);
       }
       else if(vid == "off"){
+        console.log('we here off');
         childProcess.exec('../../bin/add_photo.sh', {env: {file: pic.num + pic.type, lat: control.lat, lon: control.lon}}, function(err, stdout, stderr) {
           if (err) { throw err; }
             console.log('stdout:\n', stdout);
