@@ -14,8 +14,8 @@
 #define NUMPIXELS 3// Number of LEDs in strip
 
 // Here's how to control the LEDs from any two pins:
-#define DATAPIN    6
-#define CLOCKPIN   5
+#define DATAPIN    45
+#define CLOCKPIN   44
 Adafruit_DotStar strip = Adafruit_DotStar(
   NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
 // The last parameter is optional -- this is the color data order of the
