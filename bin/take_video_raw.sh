@@ -1,2 +1,2 @@
 #Take photo with ffmpeg
-/home/root/bin/ffmpeg/ffmpeg -t 10 -s 1280x720 -f video4linux2 -input_format mjpeg -c:v copy /home/root/edi-cam/bin/videos/1.mjpg
+/home/root/bin/ffmpeg/ffmpeg -t 10 -s 1280x720 -f video4linux2 -input_format mjpeg -i /dev/video0 -t 10 -s 1280x720 -f video4linux2 -input_format mjpeg -i /dev/video1 -c:v copy /home/root/edi-cam/bin/videos/1.mjpg -c:v copy /home/root/edi-cam/bin/videos/2.mjpg
