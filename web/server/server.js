@@ -69,13 +69,16 @@ wsServer.on('connection', function(socket) {
       if(control.level == 0){ //LEDs 0%
         childProcess.exec('echo low > /sys/class/gpio/gpio44/direction');
         childProcess.exec('echo low > /sys/class/gpio/gpio45/direction');
-      else if(control.level == 1) //LEDs 33%
+      }
+      else if(control.level == 1){ //LEDs 33%
         childProcess.exec('echo low > /sys/class/gpio/gpio44/direction');
         childProcess.exec('echo high > /sys/class/gpio/gpio45/direction');
-      else if(control.level == 2) //LEDs 66%
+      }
+      else if(control.level == 2){ //LEDs 66%
         childProcess.exec('echo high > /sys/class/gpio/gpio44/direction');
         childProcess.exec('echo low > /sys/class/gpio/gpio45/direction');
-      else //LEDs 100%
+      }
+      else{ //LEDs 100%
         childProcess.exec('echo high > /sys/class/gpio/gpio44/direction');
         childProcess.exec('echo high > /sys/class/gpio/gpio45/direction');
       }
