@@ -1,18 +1,3 @@
-/******************************************************************************
-* pong.cpp
-* Play a game of pong on the Edison OLED Block!
-* Jim Lindblom @ SparkFun Electronics
-* Original Creation Date: January 8, 2014
-*
-* This sketch uses the Edison OLED library to draw a 3-D projected
-* cube, and rotate it along all three axes.
-*
-* This code is beerware; if you see me (or any other SparkFun employee) at the
-* local, and you've found our code helpful, please buy us a round!
-*
-* Distributed as-is; no warranty is given.
-******************************************************************************/
-
 #include <iostream>
 #include "oled/Edison_OLED.h"
 #include "gpio/gpio.h"
