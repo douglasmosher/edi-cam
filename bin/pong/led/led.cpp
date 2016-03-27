@@ -5,7 +5,7 @@
 #include <unistd.h> // for usleep
 #include <stdlib.h> // Gives us atoi
 #include <stdio.h>
-#include <Adafruit_DotStar.h>
+#include <dotstar/Adafruit_DotStar.h>
 #include <SPI.h> 
 
 using namespace std;
