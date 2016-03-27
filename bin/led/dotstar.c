@@ -59,6 +59,8 @@
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #include <linux/spi/spidev.h>
+#include <gpio_edison.h>
+#include <gpio.h>
 
 // From GPIO example code by Dom and Gert van Loo on elinux.org:
 #define PI1_BCM2708_PERI_BASE 0x20000000
