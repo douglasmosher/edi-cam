@@ -1,9 +1,9 @@
 CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=spi/spi_port_edison.cpp spi/spi_device_edison.cpp oled_pong.cpp oled/Edison_OLED.cpp gpio/gpio_edison.cpp
+SOURCES=spi/spi_port_edison.cpp spi/spi_device_edison.cpp led.cpp oled/Edison_OLED.cpp gpio/gpio_edison.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=oled_pong
+EXECUTABLE=led
 
 all: $(SOURCES) $(EXECUTABLE)
 	
