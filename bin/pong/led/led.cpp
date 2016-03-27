@@ -1,11 +1,11 @@
 #include <iostream>
 #include "oled/Edison_OLED.h"
 #include "gpio/gpio.h"
+#include "dotstar/Adafruit_DotStar.h"
 #include "math.h"
 #include <unistd.h> // for usleep
 #include <stdlib.h> // Gives us atoi
 #include <stdio.h>
-#include <dotstar/Adafruit_DotStar.h>
 #include <SPI.h> 
 
 using namespace std;
