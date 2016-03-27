@@ -27,6 +27,12 @@ http.createServer(app).listen(app.get('port'), function () {
   console.log('HTTP server listening on port ' + app.get('port'));
 });
 
+// Initialize LED pins to OFF
+childProcess.exec('echo 44 > /sys/class/gpio/export');
+childProcess.exec('echo 45 > /sys/class/gpio/export');
+childProcess.exec('echo low > /sys/class/gpio/gpio44/direction');
+childProcess.exec('echo low > /sys/class/gpio/gpio45/direction');
+
 /// Video streaming section
 // Reference: https://github.com/phoboslab/jsmpeg/blob/master/stream-server.js
 
@@ -60,6 +66,19 @@ wsServer.on('connection', function(socket) {
     if(control.type == "LED"){
       console.log('Control Type --> ' + control.type);
       console.log('LED Dim Level --> ' + control.level);
+      if(control.level == 0){ //LEDs 0%
+        childProcess.exec('echo low > /sys/class/gpio/gpio44/direction');
+        childProcess.exec('echo low > /sys/class/gpio/gpio45/direction');
+      else if(control.level == 1) //LEDs 33%
+        childProcess.exec('echo low > /sys/class/gpio/gpio44/direction');
+        childProcess.exec('echo high > /sys/class/gpio/gpio45/direction');
+      else if(control.level == 2) //LEDs 66%
+        childProcess.exec('echo high > /sys/class/gpio/gpio44/direction');
+        childProcess.exec('echo low > /sys/class/gpio/gpio45/direction');
+      else //LEDs 100%
+        childProcess.exec('echo high > /sys/class/gpio/gpio44/direction');
+        childProcess.exec('echo high > /sys/class/gpio/gpio45/direction');
+      }
     }
     else if(control.type == "PIC"){
       console.log('Control Type --> ' + control.type);
@@ -133,13 +152,6 @@ http.createServer(function (req, res) {
 }).listen(configServer.streamPort, function () {
   console.log('Listening for video stream on port ' + configServer.streamPort);
 
-  // Run do_ffmpeg.sh from node                                                   
-  //stream = childProcess.exec('../../bin/do_ffmpeg.sh');
 });
  
-//stream.on("exit", function (code, signal) {
-//  if (code === null && signal === "SIGTERM") {
-//    console.log("child has been terminated");
-//  }
-//});
 module.exports.app = app;
