@@ -37,8 +37,8 @@ childProcess.exec('echo low > /sys/class/gpio/gpio45/direction');
 // Reference: https://github.com/phoboslab/jsmpeg/blob/master/stream-server.js
 
 var STREAM_MAGIC_BYTES = 'jsmp'; // Must be 4 bytes
-var width = 320;///640;
-var height = 120;///240;
+var width = 640;//320;///640;
+var height = 240;//120;///240;
 //var width = 640;
 //var height = 240;
 var stream;
@@ -59,7 +59,7 @@ wsServer.on('connection', function(socket) {
 
   console.log('New WebSocket Connection (' + wsServer.clients.length + ' total)');
 
-  // Receive control message from client
+  // Receive control message from client and updates the LEDs accordingly
   socket.on('message', function(data) {
     var control = JSON.parse(data);
     console.log('------------------------------Incoming Command------------------------------');
@@ -115,10 +115,10 @@ wsServer.on('connection', function(socket) {
       if(vid == "off"){ 
         vid = "on"; 
         //160x120
-        stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=320x120 [base]; [0:v] setpts=PTS-STARTPTS, scale=160x120 [left]; [1:v] setpts=PTS-STARTPTS, scale=160x120 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=160" -f mpeg1video http://127.0.0.1:8082');
-      }
-        //stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 320x240 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 320x240 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=640x340 [base]; [0:v] setpts=PTS-STARTPTS, scale=320x240 [left]; [1:v] setpts=PTS-STARTPTS, scale=320x240 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=320" -f mpeg1video http://127.0.0.1:8082');
+        //stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 160x120 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=320x120 [base]; [0:v] setpts=PTS-STARTPTS, scale=160x120 [left]; [1:v] setpts=PTS-STARTPTS, scale=160x120 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=160" -f mpeg1video http://127.0.0.1:8082');
       //}
+        stream = childProcess.exec('/home/root/bin/ffmpeg/ffmpeg -s 320x240 -f video4linux2 -input_format mjpeg -i /dev/video0 -s 320x240 -f video4linux2 -input_format mjpeg -i /dev/video1 -filter_complex "nullsrc=size=640x240 [base]; [0:v] setpts=PTS-STARTPTS, scale=320x240 [left]; [1:v] setpts=PTS-STARTPTS, scale=320x240 [right]; [base][left] overlay=shortest=1 [tmp1]; [tmp1][right] overlay=shortest=1:x=320" -f mpeg1video http://127.0.0.1:8082');
+      }
       else if(vid == "on"){
         stream.kill('SIGTERM');
         vid = "off";
