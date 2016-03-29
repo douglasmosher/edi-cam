@@ -79,7 +79,6 @@ if(startscene === null, copy(startscene,scene[0].name)); loadscene(get(startscen
 </image>
 <!--  place your scene hotspots here  -->
 </scene>
-</scene>
 <scene name="Rescue 2" title="Rescue 2" onstart="" lat="50.116359" lng="-122.957424" heading="0.0">
 <plugin name="video" url="plugins/videoplayer.swf" url.html5="plugins/videoplayer.js" videourl="videos/v3.mp4" />
 <view hlookat="0" vlookat="0" maxpixelzoom="1.0" fovmax="180" limitview="range" vlookatmin="-80" vlookatmax="80" />
