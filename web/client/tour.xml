@@ -28,41 +28,64 @@
 if(startscene === null, copy(startscene,scene[0].name)); loadscene(get(startscene), null, MERGE);
 </action>
 <!-- add photo here -->
-<scene name="my_house" title="My House" onstart="" lat="49.2611738" lng="-123.2138352" heading="0.0">
+<scene name="MCLD" title="MCLD" onstart="" lat="49.262363" lng="-123.250099" heading="0.0">
 <view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>
 <image>
-	<sphere url="photos/my_house.jpg"/>
+	<sphere url="photos/p4.jpg"/>
 </image>
 <!--  place your scene hotspots here  -->
 </scene>
-<scene name="inside_my_house" title="Inside My House" onstart="" lat="49.2608662" lng="-123.213681" heading="0.0">
-<plugin name="video" url="plugins/videoplayer.swf" url.html5="plugins/videoplayer.js" videourl="videos/vid.mp4" />
+<scene name="MCLD2" title="MCLD2" onstart="" lat="49.262123" lng="-123.250228" heading="0.0">
+<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>
+<image>
+	<sphere url="photos/p3.jpg"/>
+</image>
+<!--  place your scene hotspots here  -->
+</scene>
+<scene name="My house" title="My House" onstart="" lat="49.260956" lng="-123.213702" heading="0.0">
+<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>
+<image>
+	<sphere url="photos/p5.jpg"/>
+</image>
+<!--  place your scene hotspots here  -->
+</scene>
+<scene name="Disaster 1" title="Disaster 1" onstart="" lat="49.229798" lng="-124.807396" heading="0.0">
+<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="180" maxpixelzoom="2.0" fovmin="90" fovmax="180" limitview="auto"/>
+<image>
+	<sphere url="photos/p1.jpg"/>
+</image>
+<!--  place your scene hotspots here  -->
+</scene>
+<scene name="Disaster 2" title="Disaster 1" onstart="" lat="50.383141" lng="-125.962421" heading="0.0">
+<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>
+<image>
+	<sphere url="photos/p2.jpg"/>
+</image>
+<!--  place your scene hotspots here  -->
+</scene>
+<scene name="My House 2" title="My House 2" onstart="" lat="49.260800" lng="-123.213746" heading="0.0">
+<plugin name="video" url="plugins/videoplayer.swf" url.html5="plugins/videoplayer.js" videourl="videos/v2.mp4" />
 <view hlookat="0" vlookat="0" maxpixelzoom="1.0" fovmax="180" limitview="range" vlookatmin="-80" vlookatmax="80" />
 <image hfov="360" vfov="140">
 	<sphere url="plugin:video" />
 </image>
 <!--  place your scene hotspots here  -->
 </scene>
-<scene name="Haiti" title="Haiti" onstart="" lat="18.5802583" lng="-72.312777" heading="0.0">
-<plugin name="video" url="plugins/videoplayer.swf" url.html5="plugins/videoplayer.js" videourl="videos/haiti.mp4" />
-<view hlookat="0" vlookat="0" maxpixelzoom="1.0" fovmax="180" limitview="range" vlookatmin="-90" vlookatmax="90" />
+</scene>
+<scene name="Rescue 1" title="Rescue 1" onstart="" lat="49.262735" lng="-123.252532" heading="0.0">
+<plugin name="video" url="plugins/videoplayer.swf" url.html5="plugins/videoplayer.js" videourl="videos/v1.mp4" />
+<view hlookat="0" vlookat="0" maxpixelzoom="1.0" fovmax="180" limitview="range" vlookatmin="-80" vlookatmax="80" />
 <image hfov="360" vfov="140">
 	<sphere url="plugin:video" />
 </image>
 <!--  place your scene hotspots here  -->
-
 </scene>
-<scene name="kaiser" title="Kaiser" onstart="" lat="49.2621314" lng="-123.2504511" heading="0.0">
-<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>
-<image>
-	<sphere url="photos/inside_my_house.jpg"/>
-</image>
-<!--  place your scene hotspots here  -->
 </scene>
-<scene name="wreck_beach" title="Wreck Beach" onstart="" lat="49.2634327" lng="-123.2592465" heading="0.0">
-<view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>
-<image>
-	<sphere url="photos/wreck_beach.jpg"/>
+<scene name="Rescue 2" title="Rescue 2" onstart="" lat="50.116359" lng="-122.957424" heading="0.0">
+<plugin name="video" url="plugins/videoplayer.swf" url.html5="plugins/videoplayer.js" videourl="videos/v3.mp4" />
+<view hlookat="0" vlookat="0" maxpixelzoom="1.0" fovmax="180" limitview="range" vlookatmin="-80" vlookatmax="80" />
+<image hfov="360" vfov="180">
+	<sphere url="plugin:video" />
 </image>
 <!--  place your scene hotspots here  -->
 </scene>
